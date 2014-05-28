@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-module
+  type="WEB"
+  name="newht"
+  id="myeclipse.1375690436064"
+  context-root="/newht"
+  j2ee-spec="5.0"
+  archive="newht.war">
+  <attributes>
+    <attribute name="webrootdir" value="/WebRoot" />
+  </attributes>
+</project-module>
+
