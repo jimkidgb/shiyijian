@@ -42,6 +42,9 @@
 			<th field="order_time" width="180" align="center">
 				订单时间
 			</th>
+			<th field="id" width="150" align="center" formatter="cellOrder">
+				操作
+			</th>
 		</tr>
 	</thead>
 </table>
@@ -53,6 +56,11 @@ function searchOrder(){
 			s_ordertime_end:$("#s_ordertime_end").val(),
 			s_order_status:$("#s_order_status").combotree('getValue')
 		}});  
+}
+
+function cellOrder(value,row,index){
+	var val = "<a href ='javascript:void(0);' onclick='printproformNew("+value+")'>订单明细</a>";
+    return val;
 }
 
 function cellstatus(value,row,index){
@@ -72,5 +80,10 @@ function printproform(){
   }else{ 
     $.messager.alert("提示", "请选择要打印的订单!");
   }
+}
+
+function printproformNew(value){
+      var tmp=window.open("order/printFormNew/"+value,"","toolbar=no,menubar=no,fullscreen=1")
+      tmp.focus();
 }
 </script>

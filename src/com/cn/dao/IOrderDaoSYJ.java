@@ -11,4 +11,6 @@ public interface IOrderDaoSYJ {
 
 	String getnewOrderCount(Order order);
 
+	Order getOrderbyId(String id);
+
 }

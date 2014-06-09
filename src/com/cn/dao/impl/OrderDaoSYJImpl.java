@@ -5,6 +5,7 @@ import java.util.List;
 
 import com.cn.dao.IOrderDaoSYJ;
 import com.cn.model.platform.Codelist;
+import com.cn.model.platform.User;
 import com.cn.model.shiyijian.Order;
 import com.cn.utils.DbUtils;
 
@@ -66,5 +67,11 @@ public class OrderDaoSYJImpl extends DbUtils implements IOrderDaoSYJ {
 			}	
 		}
 		return flag;
+	}
+
+	@Override
+	public Order getOrderbyId(String id) {
+		String sql = "select * from t_client_order where id = ?";
+		return findFirst(Order.class, sql, id);
 	}
 }

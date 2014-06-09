@@ -49,11 +49,11 @@ public class AccDaoImpl extends DbUtils implements IAccDao{
 		if (a.getAccess_name() != null && !a.getAccess_name().equals("")) {
 			sql += " and access_name like '%" + a.getAccess_name() +  "%' ";
 		}
-		if (a.getAccess_type() != null && !a.getAccess_type().equals("")) {
+		if (a.getAccess_type() != null && !a.getAccess_type().equals("") && !a.getAccess_type().equals("-1")) {
 			sql += " and access_type = '" + a.getAccess_type() + "' ";
 		}
 		
-		if (a.getStatus() != null && !a.getStatus().equals("")) {
+		if (a.getStatus() != null && !a.getStatus().equals("") && !a.getStatus().equals("-1")) {
 			sql += " and status = '" + a.getStatus() + "' ";
 		}	
 		sql += " order by id desc limit ?,?";
@@ -88,11 +88,11 @@ public class AccDaoImpl extends DbUtils implements IAccDao{
 		if (a.getAccess_name() != null && !a.getAccess_name().equals("")) {
 			sql += " and access_name like '%" + a.getAccess_name() +  "%' ";
 		}
-		if (a.getAccess_type() != null && !a.getAccess_type().equals("")) {
+		if (a.getAccess_type() != null && !a.getAccess_type().equals("")&& !a.getAccess_type().equals("-1")) {
 			sql += " and access_type = '" + a.getAccess_type() + "' ";
 		}
 		
-		if (a.getStatus() != null && !a.getStatus().equals("")) {
+		if (a.getStatus() != null && !a.getStatus().equals("") && !a.getStatus().equals("-1")) {
 			sql += " and status = '" + a.getStatus() + "' ";
 		}
 		return findBy(sql, 1).toString();

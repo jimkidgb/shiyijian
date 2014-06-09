@@ -73,4 +73,42 @@ public class OrderController extends Controller{
 		}		
 		renderJsp("/pages/order/print.jsp");
 	}
+	
+	public void printFormNew(){
+		//获得是哪个订单的
+		String id = getPara(0);
+		Order order = orderDaoSYJ.getOrderbyId(id);
+		if(order != null){
+			String order_no = order.getOrder_no();
+			OrderDetail printdetail = orderdetailDao.findbyOrderNo(order_no);
+			if(printdetail != null){
+				setAttr("order_no", printdetail.getOrder_no());
+				setAttr("order_counts",printdetail.getOrder_counts());//数量
+				setAttr("perheight",printdetail.getPerheight());//身高
+				setAttr("perweight",printdetail.getPerweight());  //体重
+				setAttr("neck",printdetail.getNeck());          //领围
+				setAttr("waistline",printdetail.getWaistline());  //腰围
+				setAttr("shoulder",printdetail.getShoulder());    //臂长
+				setAttr("bust",printdetail.getBust());       //胸围
+				setAttr("long_sleeve",printdetail.getLong_sleeve()); //长袖长
+				setAttr("cuff",printdetail.getCuff());       //袖口宽
+				setAttr("arm", printdetail.getArm());         //臂围
+				setAttr("shirtVersion",printdetail.getShirtVersion());  //版型
+				setAttr("collarVersion",printdetail.getCollarVersion());  //领型
+				setAttr("cuffVersion",printdetail.getCuffVersion());    //袖口
+				setAttr("pocketVersion",printdetail.getPocketVersion()); //口袋
+				setAttr("backVersion",printdetail.getBackVersion());  //后背
+				setAttr("hemVersion",printdetail.getHemVersion());   //下摆
+				setAttr("buttonVersion",printdetail.getButtonVersion());  //纽扣
+				setAttr("figureVersion",printdetail.getFigureVersion());   //体型特征
+				setAttr("abdominalVersion",printdetail.getAbdominalVersion()); //腰部特征
+				setAttr("shoulderVersion",printdetail.getShirtVersion());  //肩部特征
+				setAttr("front_pic",JfinalConfig.DOMAIN2 + printdetail.getFront_pic()); //正面照片
+				setAttr("flank_pic",JfinalConfig.DOMAIN2 + printdetail.getFlank_pic());  //侧面照片
+				setAttr("placketVersion",printdetail.getPlacketVersion()); //门襟
+				setAttr("order_ownercaller",printdetail.getOrder_ownercaller());  //个性签名			
+			}	
+		}
+		renderJsp("/pages/order/print.jsp");
+	}
 }
