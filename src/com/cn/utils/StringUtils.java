@@ -94,4 +94,10 @@ public class StringUtils {
         }
         return list.subList(startIndex, endIndex);
     }
+	
+
+	public static String avoidDoubleNull(String access_pric) {
+		// TODO Auto-generated method stub
+		return access_pric == null ? "0":access_pric;
+	}
 }

@@ -25,7 +25,7 @@
 			<table cellpadding="0" cellspacing="0" style="width: 100%; height: 100%;">
 				<tr>
 					<td style="width: 250px;; height: 60px; color: #fff; font-size: 30px; font-weight: bold; padding-left: 10px;">
-						微信管理平台
+						群鸿衬衫平台
 					</td>
 					<td>
 						<table align="left">
@@ -36,7 +36,7 @@
 							</tr>
 							<tr>
 								<td style="font-size: 13px; color: #fff;">
-									【超级管理员】欢迎使用微信平台
+									【${realname}】欢迎使用群鸿衬衫平台
 								</td>
 							</tr>
 						</table>
@@ -179,7 +179,7 @@ function setTime(){
 	document.getElementById('time').innerText = time;
 }
 function exit(){
-	$.messager.confirm("提示", "您确定要退出短信平台吗?", function (r) {
+	$.messager.confirm("提示", "您确定要退出平台吗?", function (r) {
 		if(r){
 			$.ajax({
 				url:'login/logout',

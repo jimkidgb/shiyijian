@@ -17,6 +17,7 @@ import com.jfinal.config.Interceptors;
 import com.jfinal.config.JFinalConfig;
 import com.jfinal.config.Plugins;
 import com.jfinal.config.Routes;
+import com.jfinal.ext.interceptor.SessionInViewInterceptor;
 
 public class JfinalConfig extends JFinalConfig {
 	private static ResourceBundle rb = ResourceBundle.getBundle("config.system");
@@ -28,6 +29,7 @@ public class JfinalConfig extends JFinalConfig {
 	public static String ACCOUNT3 = "";
 	public static String FILEMAXSIZE = "";
 	public static String DOMAIN = "";
+	public static String DOMAIN2 = "";
 	public static String UPLOADFILEPATH = "";
 	public static String ACCOUNT1APPID = "";
 	public static String ACCOUNT1APPSERCT = "";
@@ -59,6 +61,7 @@ public class JfinalConfig extends JFinalConfig {
 	 */
 	@Override
 	public void configHandler(Handlers handlers) {
+		//全局，判断cookie没有userid退出
 		handlers.add(new SysHandlers());
 	}
 
@@ -67,6 +70,8 @@ public class JfinalConfig extends JFinalConfig {
 	 */
 	@Override
 	public void configInterceptor(Interceptors interceptors) {
+		//增加这个拦截器为了使页面能够使用session中的值
+		interceptors.add(new SessionInViewInterceptor());
 	}
 
 	/**
@@ -82,6 +87,7 @@ public class JfinalConfig extends JFinalConfig {
 		ACCOUNT3 = rb.getString("ACCOUNT3");
 		FILEMAXSIZE = rb.getString("FILE.MAXSIZE");
 		DOMAIN = rb.getString("DOMAIN");
+		DOMAIN2 = rb.getString("DOMAIN2");
 		UPLOADFILEPATH = rb.getString("UPLOAD.FILEPATH");
 		ACCOUNT1APPID = rb.getString("ACCOUNT1.APPID");
 		ACCOUNT1APPSERCT = rb.getString("ACCOUNT1.APPSERCT");
@@ -126,5 +132,8 @@ public class JfinalConfig extends JFinalConfig {
 		routes.add("/template", TemplateController.class);
 		routes.add("/statistical", StatisticalController.class);
 		routes.add("/classification", ClassificationController.class);
+		routes.add("/fabric",FabricController.class);
+		routes.add("/acc",AccController.class);
+		routes.add("/order", OrderController.class);
 	}
 }

@@ -40,6 +40,10 @@ public class LoginController extends Controller {
 					getResponse().addCookie(c1);
 					getResponse().addCookie(c2);
 					getResponse().addCookie(c3);
+					
+					//把用户的实际姓名放在Session中
+					setSessionAttr("realname", u.getRealname());
+					
 					msg = "success";
 				} else {
 					msg = "errorpassword";
